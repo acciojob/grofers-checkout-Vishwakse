@@ -4,22 +4,30 @@ document.body.appendChild(getSumBtn);
 
 const getSum = () => {
 //Add your code here
-    const priceElements = document.querySelectorAll('.prices');
+    const prices = document.querySelectorAll('.prices');
     let total = 0;
 
-    priceElements.forEach(item => {
-        total += parseFloat(item.textContent);
+    // Sum all price values
+    prices.forEach((price) => {
+        total += parseFloat(price.textContent);
     });
 
+    // Select the table to append the result
     const table = document.querySelector('table');
+    
+    // Create the new row and cell
     const newRow = document.createElement('tr');
     const totalCell = document.createElement('td');
 
+    // Requirement: The ID must be 'ans'
+    totalCell.setAttribute('id', 'ans');
     totalCell.textContent = total;
-    totalCell.setAttribute('id', 'ans'); // Often required for this specific test
-    
+
     newRow.appendChild(totalCell);
     table.appendChild(newRow);
+
+  
 };
+
 getSumBtn.addEventListener("click", getSum);
 
